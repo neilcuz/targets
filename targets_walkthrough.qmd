@@ -2,7 +2,6 @@
 title: "Introduction to the targets package in R"
 format: gfm
 editor: visual
-prefer-html: true
 ---
 
 This notebook contains the code underpinning the *Targets* Twitter thread.
@@ -78,12 +77,15 @@ Now we edit the [_targets.R]() file directly which you can see [here]().
 `tar_manifest` gives a handy table detailing the pipeline
 
 ```{r}
+#| output: false
+
 tar_manifest()
 ```
 
-`tar_visnetwork` gives you a plot of the pipeline. You will need to install `visNetwork` but a prompt comes up so I've omitted.
+`tar_visnetwork` gives you a plot of the pipeline. You will need to install `visNetwork` but a prompt comes up so I've omitted. I've omitted the plot for GitHub because rendering was a little complicated.
 
 ```{r}
+#| eval: false
 tar_visnetwork()
 ```
 

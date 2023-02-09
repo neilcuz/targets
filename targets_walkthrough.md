@@ -1,12 +1,6 @@
 Introduction to the targets package in R
 ================
 
-<script src="targets_walkthrough_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<link href="targets_walkthrough_files/libs/vis-9.1.0/vis-network.min.css" rel="stylesheet" />
-<script src="targets_walkthrough_files/libs/vis-9.1.0/vis-network.min.js"></script>
-<script src="targets_walkthrough_files/libs/visNetwork-binding-2.1.2/visNetwork.js"></script>
-
-
 This notebook contains the code underpinning the *Targets* Twitter
 thread.
 
@@ -96,28 +90,13 @@ Now we edit the [\_targets.R]() file directly which you can see
 tar_manifest()
 ```
 
-    # A tibble: 9 × 2
-      name          command                                   
-      <chr>         <chr>                                     
-    1 file_b        "file.path(here(), \"dataset_b.rds\")"    
-    2 file_a        "file.path(here(), \"dataset_a.csv\")"    
-    3 b_raw         "read_rds(file_b)"                        
-    4 a_raw         "read_csv(file_a, show_col_types = FALSE)"
-    5 b_clean       "clean_b(b_raw)"                          
-    6 a_clean       "clean_a(a_raw)"                          
-    7 ab            "join_ab(a_clean, b_clean)"               
-    8 qa_message    "quality_checks(ab)"                      
-    9 summary_stats "summarise_ab(ab)"                        
-
 `tar_visnetwork` gives you a plot of the pipeline. You will need to
-install `visNetwork` but a prompt comes up so I’ve omitted.
+install `visNetwork` but a prompt comes up so I’ve omitted. I’ve omitted
+the plot for GitHub because rendering was a little complicated.
 
 ``` r
 tar_visnetwork()
 ```
-
-<div id="htmlwidget-5e57afc30b615204731f" style="width:672px;height:480px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5e57afc30b615204731f">{"x":{"nodes":{"name":["a_clean","a_raw","ab","b_clean","b_raw","file_a","file_b","qa_message","summary_stats","quality_checks","join_ab","summarise_ab","clean_a","clean_b"],"type":["stem","stem","stem","stem","stem","stem","stem","stem","stem","function","function","function","function","function"],"status":["outdated","outdated","outdated","outdated","outdated","outdated","outdated","outdated","outdated","uptodate","uptodate","uptodate","uptodate","uptodate"],"seconds":[0.007,0.059,0.005,0.006,0,0,0.001,0.001,0.005,null,null,null,null,null],"bytes":[234,388,301,256,262,152,468,301,203,null,null,null,null,null],"branches":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"label":["a_clean","a_raw","ab","b_clean","b_raw","file_a","file_b","qa_message","summary_stats","quality_checks","join_ab","summarise_ab","clean_a","clean_b"],"color":["#78B7C5","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#354823","#354823","#354823","#354823","#354823"],"id":["a_clean","a_raw","ab","b_clean","b_raw","file_a","file_b","qa_message","summary_stats","quality_checks","join_ab","summarise_ab","clean_a","clean_b"],"level":[3,2,4,3,2,1,1,5,5,1,1,1,1,1],"shape":["dot","dot","dot","dot","dot","dot","dot","dot","dot","triangle","triangle","triangle","triangle","triangle"]},"edges":{"from":["a_raw","clean_a","file_b","ab","quality_checks","ab","summarise_ab","file_a","b_raw","clean_b","a_clean","b_clean","join_ab"],"to":["a_clean","a_clean","b_raw","qa_message","qa_message","summary_stats","summary_stats","a_raw","b_clean","b_clean","ab","ab","ab"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"interaction":{"zoomSpeed":1},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Up to date","Stem","Function"],"color":["#78B7C5","#354823","#899DA4","#899DA4"],"shape":["dot","dot","dot","triangle"]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 
 ## Run the pipeline
 
@@ -130,7 +109,7 @@ tar_make()
     • start target file_b
     • built target file_b [0.001 seconds]
     • start target file_a
-    • built target file_a [0.001 seconds]
+    • built target file_a [0 seconds]
     • start target b_raw
     • built target b_raw [0 seconds]
     • start target a_raw
@@ -167,10 +146,10 @@ tar_make()
 
     ✔ skip target file_b
     • start target file_a
-    • built target file_a [0 seconds]
+    • built target file_a [0.001 seconds]
     ✔ skip target b_raw
     • start target a_raw
-    • built target a_raw [0.06 seconds]
+    • built target a_raw [0.059 seconds]
     ✔ skip target b_clean
     • start target a_clean
     • built target a_clean [0.007 seconds]
