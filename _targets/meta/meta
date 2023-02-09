@@ -1,15 +1,15 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-a_clean|stem|181aba008ad7f981|82eee80688ccede1|6ca63a1257eb757a|-91252325||t19397.6804892342s|b7e15d70da794704|235|rds|local|vector|||0.006||
-a_raw|stem|910efa30738883c8|9abe72e5e1c3821e|b3aac2f097ea5318|-1677373953||t19397.6804891044s|24e075d0352ab5d9|394|rds|local|vector|||0.059||
-ab|stem|3d199a3d90b405cb|01df2847445fc6ce|c41e4616574d5f67|1172708952||t19397.6804893281s|cb91aba74fec518e|303|rds|local|vector|||0.006||
-b_clean|stem|b3ee7e108bb7e057|8a3e3ce68cd0a4cd|2de5999057c6bff5|-1842306752||t19397.6804773165s|5419e37049f19aa2|258|rds|local|vector|||0.006||
-b_raw|stem|66be981a2fc524c0|377706227a903aee|34165e66d73b638f|-304223648||t19397.6804765105s|76d5158c9904ac60|264|rds|local|vector|||0||
+a_clean|stem|f00bef5cac83ed3f|82eee80688ccede1|e5b36444fc643d4e|-91252325||t19397.6814719901s|b7e15d70da794704|235|rds|local|vector|||0.007||
+a_raw|stem|823007b903f3a099|9abe72e5e1c3821e|2c7db87ad842d52f|-1677373953||t19397.6814718591s|7fc248283f487b24|392|rds|local|vector|||0.06||
+ab|stem|4139921df51bf7dd|01df2847445fc6ce|cc1da540fed209c3|1172708952||t19397.6814720847s|21cb808e5a67bfdb|302|rds|local|vector|||0.005||
+b_clean|stem|c24de67db953b98b|8a3e3ce68cd0a4cd|860c3ccf4fd3d8cb|-1842306752||t19397.6814599986s|f61d5eec182b6cd2|255|rds|local|vector|||0.006||
+b_raw|stem|9c5217ed6c7166bf|377706227a903aee|825d8c6d4ad21cca|-304223648||t19397.6814591905s|efa41a4afcb89295|262|rds|local|vector|||0||
 clean_a|function|89238f62f7360de1|||||||||||||||
 clean_b|function|eb5404c439d67367|||||||||||||||
-file_a|stem|3a1348d63551172c|854ec4b63724c3a3|f3b0904d3aebdefe|620568008|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_a.csv|t19397.6804777857s|dd5db50a8149e5ce|152|file|local|vector|||0.001||
-file_b|stem|0b22f332db60234b|d781d7e81e190278|f3b0904d3aebdefe|1849929812|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_b.rds|t19397.680453719s|fd542be5266e40a8|468|file|local|vector|||0||
+file_a|stem|31b1c33b19f3f8d2|854ec4b63724c3a3|f3b0904d3aebdefe|620568008|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_a.csv|t19397.6814604894s|5f22883ff0bcf597|153|file|local|vector|||0.001||
+file_b|stem|58f0ebab023293bf|d781d7e81e190278|f3b0904d3aebdefe|1849929812|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_b.rds|t19397.6814364578s|fd542be5266e40a8|468|file|local|vector|||0||
 join_ab|function|48a94b507ecc4fb7|||||||||||||||
-qa_message|stem|3d199a3d90b405cb|a79cd39c5eea63ee|06e14ead94a59fd4|1341618972||t19397.6804893671s|cb91aba74fec518e|303|rds|local|vector|||0.001||
+qa_message|stem|4139921df51bf7dd|a79cd39c5eea63ee|f35c34d1699240d6|1341618972||t19397.6814721243s|21cb808e5a67bfdb|302|rds|local|vector|||0.001||
 quality_checks|function|e1de624c09074b80|||||||||||||||
 summarise_ab|function|6dcc9c56ca977f8a|||||||||||||||
-summary_stats|stem|74cff2df97e728cc|89dad6bf08aecb42|b52975a77f3dd3f2|-948256089||t19397.6804894519s|85f9d15331713ebb|203|rds|local|vector|||0.005||
+summary_stats|stem|6e1c5269e94ea66c|89dad6bf08aecb42|48aaf26be3ced619|-948256089||t19397.6814722093s|2721c650416a264a|204|rds|local|vector|||0.005||

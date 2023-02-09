@@ -22,7 +22,6 @@ First we need to install and load the targets package.
 if (!require(targets)) install.packages("targets")
 
 library(targets)
-
 ```
 
 Now we need to initialise the _targets.R file. This controls the pipeline. Luckily we can do it with a one-liner.

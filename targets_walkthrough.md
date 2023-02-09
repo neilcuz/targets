@@ -202,13 +202,13 @@ tar_make()
     • start target a_clean
     • built target a_clean [0.003 seconds]
     • start target ab
-    • built target ab [0.005 seconds]
+    • built target ab [0.006 seconds]
     • start target qa_message
     QA Check: Sales ok
     • built target qa_message [0.001 seconds]
     • start target summary_stats
     • built target summary_stats [0.005 seconds]
-    • end pipeline [0.181 seconds]
+    • end pipeline [0.184 seconds]
 
 What happens though when we update dataset `a` only.
 
@@ -232,15 +232,15 @@ tar_make()
     • built target file_a [0.001 seconds]
     ✔ skip target b_raw
     • start target a_raw
-    • built target a_raw [0.059 seconds]
+    • built target a_raw [0.06 seconds]
     ✔ skip target b_clean
     • start target a_clean
-    • built target a_clean [0.006 seconds]
+    • built target a_clean [0.007 seconds]
     • start target ab
-    • built target ab [0.006 seconds]
+    • built target ab [0.005 seconds]
     • start target qa_message
     QA Check: Sales ok
     • built target qa_message [0.001 seconds]
     • start target summary_stats
     • built target summary_stats [0.005 seconds]
-    • end pipeline [0.177 seconds]
+    • end pipeline [0.178 seconds]
