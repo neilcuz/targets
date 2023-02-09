@@ -122,7 +122,7 @@ summarise_ab <- function (ab) {
 We can use read_csv and read_rds to read in the files so we don’t need
 to define new functions here.
 
-Now we edit the [\_targets.R]() file directly which you can see
+Now we edit the \_targets.R file directly which you can see
 [here](https://github.com/neilcuz/targets/blob/main/_targets.R). The
 code in this file is also in the chunk below.
 
@@ -192,23 +192,23 @@ tar_make()
     • start target file_b
     • built target file_b [0 seconds]
     • start target file_a
-    • built target file_a [0.001 seconds]
+    • built target file_a [0 seconds]
     • start target b_raw
     • built target b_raw [0 seconds]
     • start target a_raw
-    • built target a_raw [0.06 seconds]
+    • built target a_raw [0.059 seconds]
     • start target b_clean
-    • built target b_clean [0.005 seconds]
+    • built target b_clean [0.006 seconds]
     • start target a_clean
     • built target a_clean [0.003 seconds]
     • start target ab
     • built target ab [0.005 seconds]
     • start target qa_message
     QA Check: Sales ok
-    • built target qa_message [0 seconds]
+    • built target qa_message [0.001 seconds]
     • start target summary_stats
     • built target summary_stats [0.005 seconds]
-    • end pipeline [0.182 seconds]
+    • end pipeline [0.181 seconds]
 
 What happens though when we update dataset `a` only.
 
@@ -235,12 +235,12 @@ tar_make()
     • built target a_raw [0.059 seconds]
     ✔ skip target b_clean
     • start target a_clean
-    • built target a_clean [0.007 seconds]
+    • built target a_clean [0.006 seconds]
     • start target ab
-    • built target ab [0.005 seconds]
+    • built target ab [0.006 seconds]
     • start target qa_message
     QA Check: Sales ok
     • built target qa_message [0.001 seconds]
     • start target summary_stats
     • built target summary_stats [0.005 seconds]
-    • end pipeline [0.178 seconds]
+    • end pipeline [0.177 seconds]
