@@ -1,0 +1,119 @@
+---
+title: "Introduction to the targets package in R"
+format: gfm
+editor: visual
+---
+
+This notebook contains the code underpinning the *Targets* Twitter thread.
+
+- Check out the Shoogle blog for more R and data science content [Shoogle Blog](https://www.shoogle.co/blog)
+
+-   Follow me on Twitter for threads on data and coding @neilgcurrie [twitter.com/neilgcurrie](www.twitter.com/neilgcurrie)
+
+You can find code and links to all my threads [here](https://github.com/neilcuz/threads).
+
+## Setup the targets package
+
+First we need to install and load the targets package.
+
+```{r}
+#| output: false
+
+if (!require(targets)) install.packages("targets")
+
+library(targets)
+
+```
+
+Now we need to initialise the _targets.R file. This controls the pipeline. Luckily we can do it with a one-liner.
+
+```{r}
+use_targets()
+```
+## An example pipeline
+
+First let's generate some fake data for the pipeline. a we will save as a CSV file and b as an rds file.
+
+```{r}
+library(tidyverse)
+library(here)
+
+# Create dataset A
+
+stores <- c("glasgow", "oslo", "philadelphia", "montreal", "osaka", "seoul")
+
+file_a <- file.path(here(), "0027_targets", "dataset_a.csv")
+
+stores |> 
+  tibble(store = _,
+         sales = c(runif(5, 50000, 100000), NA_real_)) |> 
+  write_csv(file_a)
+  
+# Create dataset B
+
+file_b <- file.path(here(), "0027_targets", "dataset_b.csv")
+
+tibble(region = rep(c("EUROPE", "NORTH AMERICA", "ASIA"), each = 2),
+       store = str_to_sentence(stores),
+       years_open = round(runif(6, 1, 15))) |> 
+  write_rds(file_b)
+```
+
+We create some functions and save them in functions.R. These can viewed [here]() in their original script and can also be seen in the code chunk below.
+
+We can use read_csv and read_rds to read in the files so we don't need to define
+new functions here.
+
+```{r}
+clean_a <- function (a_raw) {
+  
+  a_raw |> 
+    filter(!is.na(sales)) |> 
+    mutate(store = str_to_sentence(store))
+  
+}
+
+clean_b <- function (b_raw) {
+  
+  b_raw |> 
+    mutate(region = str_to_sentence(region))
+  
+}
+
+join_ab <- function (a_clean, b_clean) {
+  
+  left_join(a_clean, b_clean, by = "store") |> 
+    select(region, store, sales, years_open)
+  
+}
+
+quality_checks <- function (ab) {
+  
+  min_sales <- ab |> 
+    pull(sales) |> 
+    min()
+  
+  if (min_sales < 0) {
+    
+    return ("Error in sales")
+    
+  }
+  
+  return ("Sales ok")
+  
+}
+
+summarise_ab <- function (ab) {
+  
+  ab |> 
+    group_by(region) |> 
+    summarise(mean_sales = mean(sales)) |> 
+    arrange(mean_sales)
+  
+}
+```
+
+Now we edit the [_targets.R]() file. The code is in the chunk below too but have a look at the script directly.
+
+
+
