@@ -28,11 +28,13 @@ quality_checks <- function (ab) {
   
   if (min_sales < 0) {
     
-    return ("Error in sales")
+    message ("QA CHECK: Error in sales")
     
   }
   
-  return ("Sales ok")
+  message ("QA Check: Sales ok")
+  
+  return (ab)
   
 }
 

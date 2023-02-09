@@ -2,6 +2,7 @@
 title: "Introduction to the targets package in R"
 format: gfm
 editor: visual
+prefer-html: true
 ---
 
 This notebook contains the code underpinning the *Targets* Twitter thread.
@@ -32,17 +33,23 @@ use_targets()
 ```
 ## An example pipeline
 
-First let's generate some fake data for the pipeline. a we will save as a CSV file and b as an rds file.
+Load libraries required for inside the pipeline
 
 ```{r}
+#| output: false
+
 library(tidyverse)
 library(here)
+```
 
+Generate some fake data for the pipeline. `a` we will save as a CSV file and `b` as an rds file.
+
+```{r}
 # Create dataset A
 
 stores <- c("glasgow", "oslo", "philadelphia", "montreal", "osaka", "seoul")
 
-file_a <- file.path(here(), "0027_targets", "dataset_a.csv")
+file_a <- file.path(here(), "dataset_a.csv")
 
 stores |> 
   tibble(store = _,
@@ -51,7 +58,7 @@ stores |>
   
 # Create dataset B
 
-file_b <- file.path(here(), "0027_targets", "dataset_b.csv")
+file_b <- file.path(here(), "dataset_b.rds")
 
 tibble(region = rep(c("EUROPE", "NORTH AMERICA", "ASIA"), each = 2),
        store = str_to_sentence(stores),
@@ -59,61 +66,52 @@ tibble(region = rep(c("EUROPE", "NORTH AMERICA", "ASIA"), each = 2),
   write_rds(file_b)
 ```
 
-We create some functions and save them in functions.R. These can viewed [here]() in their original script and can also be seen in the code chunk below.
+We create some functions and save them in `functions.R`. These can viewed [here]() in their original script and can also be seen in the code chunk below.
 
 We can use read_csv and read_rds to read in the files so we don't need to define
 new functions here.
 
+Now we edit the [_targets.R]() file directly which you can see [here]().
+
+## Inspect the pipeline
+
+`tar_manifest` gives a handy table detailing the pipeline
+
 ```{r}
-clean_a <- function (a_raw) {
-  
-  a_raw |> 
-    filter(!is.na(sales)) |> 
-    mutate(store = str_to_sentence(store))
-  
-}
-
-clean_b <- function (b_raw) {
-  
-  b_raw |> 
-    mutate(region = str_to_sentence(region))
-  
-}
-
-join_ab <- function (a_clean, b_clean) {
-  
-  left_join(a_clean, b_clean, by = "store") |> 
-    select(region, store, sales, years_open)
-  
-}
-
-quality_checks <- function (ab) {
-  
-  min_sales <- ab |> 
-    pull(sales) |> 
-    min()
-  
-  if (min_sales < 0) {
-    
-    return ("Error in sales")
-    
-  }
-  
-  return ("Sales ok")
-  
-}
-
-summarise_ab <- function (ab) {
-  
-  ab |> 
-    group_by(region) |> 
-    summarise(mean_sales = mean(sales)) |> 
-    arrange(mean_sales)
-  
-}
+tar_manifest()
 ```
 
-Now we edit the [_targets.R]() file. The code is in the chunk below too but have a look at the script directly.
+`tar_visnetwork` gives you a plot of the pipeline. You will need to install `visNetwork` but a prompt comes up so I've omitted.
+
+```{r}
+tar_visnetwork()
+```
+
+## Run the pipeline
+
+If running for the first time then the whole pipeline will be ran.
+
+```{r}
+tar_make()
+```
+
+What happens though when we update dataset `a` only.
+
+```{r}
+stores |> 
+  tibble(store = _,
+         sales = c(runif(5, 50000, 100000), NA_real_)) |> 
+  write_csv(file_a)
+```
+
+
+Re-run the pipeline. Notice that reading in and cleaning file b have both been skipped because there were no changes. If a run takes a while that could be a good time saving.
+
+```{r}
+tar_make()
+```
+
+
 
 
 

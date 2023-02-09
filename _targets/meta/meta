@@ -1,0 +1,15 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+a_clean|stem|24e36d0a09ea6e99|82eee80688ccede1|7f244185c674467c|-91252325||t19397.6729866321s|b7e15d70da794704|235|rds|local|vector|||0.007||
+a_raw|stem|5b93848c83cf7263|9abe72e5e1c3821e|5c5108d0ce593911|-1677373953||t19397.6729865021s|c047e2a96adccb67|386|rds|local|vector|||0.06||
+ab|stem|ec88b61007043cce|01df2847445fc6ce|89a0c3510af424c4|1172708952||t19397.6729867266s|21cb808e5a67bfdb|302|rds|local|vector|||0.005||
+b_clean|stem|8496d73f249368b6|8a3e3ce68cd0a4cd|6381fa123a541dc4|-1842306752||t19397.672974788s|e4d8959e1d69ff64|257|rds|local|vector|||0.005||
+b_raw|stem|584df0c46a7a98f5|377706227a903aee|83af47bbdfd38267|-304223648||t19397.6729739769s|76d5158c9904ac60|264|rds|local|vector|||0||
+clean_a|function|89238f62f7360de1|||||||||||||||
+clean_b|function|eb5404c439d67367|||||||||||||||
+file_a|stem|a202878dada525f8|854ec4b63724c3a3|f3b0904d3aebdefe|620568008|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_a.csv|t19397.6729752519s|2f4c0f199b39241a|151|file|local|vector|||0||
+file_b|stem|2faff4dc97abf682|d781d7e81e190278|f3b0904d3aebdefe|1849929812|/Users/neilcurrie/Main/Shoogle/Social Content/targets/dataset_b.rds|t19397.6729413309s|fd542be5266e40a8|468|file|local|vector|||0.001||
+join_ab|function|48a94b507ecc4fb7|||||||||||||||
+qa_message|stem|ec88b61007043cce|a79cd39c5eea63ee|ce22bd6781284621|1341618972||t19397.6729867662s|21cb808e5a67bfdb|302|rds|local|vector|||0.001||
+quality_checks|function|e1de624c09074b80|||||||||||||||
+summarise_ab|function|6dcc9c56ca977f8a|||||||||||||||
+summary_stats|stem|8442605cda8ddd44|89dad6bf08aecb42|1fe34f6225b6cf4c|-948256089||t19397.6729868517s|2721c650416a264a|204|rds|local|vector|||0.005||
